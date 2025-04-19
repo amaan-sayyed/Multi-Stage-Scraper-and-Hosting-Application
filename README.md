@@ -68,6 +68,8 @@ If the URL is https://example.com, the output might look like:
 }
 ```
 
+![alt text](<Screenshot from 2025-04-19 22-24-58.png>)
+
 ---
 
 ### Notes
