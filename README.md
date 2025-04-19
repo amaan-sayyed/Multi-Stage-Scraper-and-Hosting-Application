@@ -22,10 +22,78 @@ The application uses a multi-stage Docker build to keep the final image lightwei
 
 ---
 
-## Build Instructions
+## How to Build the Docker Image
 1. Clone the repository:
 ```bash
    git clone <repository-url>
    cd <repository-folder>
+```
+2. Build the Docker image:
+```bash
+   docker build -t scraper-host .
+```
+---
 
-2. 
+## How to Run the Container
+Run the container using the following command:
+```bash
+   docker run -e SCRAPE_URL=https://example.com -p 5000:5000 scraper-host
+```
+Explanation:
+- -e SCRAPE_URL=https://example.com: Passes the URL to scrape as an environment variable. Replace https://example.com with the desired URL.
+- -p 5000:5000: Maps port 5000 of the container to port 5000 on your host machine.
+
+---
+
+## How to Access the Hosted Scraped Data
+1. Open your browser and navigate to:
+```bash
+   http://localhost:5000
+```
+This will display the scraped data as JSON.
+
+2. Alternatively, use curl to fetch the data:
+```bash
+   curl http://localhost:5000
+```
+---
+
+### Example Output
+If the URL is https://example.com, the output might look like:
+
+```bash
+{
+  "title": "Example Domain",
+  "heading": "Example Domain"
+}
+```
+
+---
+
+### Notes
+- If no SCRAPE_URL is provided, the application defaults to https://example.com.
+- Ensure the target URL is accessible and contains a h1 tag for proper scraping.
+
+---
+
+### Troubleshooting
+1. Chromium Not Found:
+    - Ensure the executablePath in scrape.js is set to /usr/bin/chromium.
+2. Port Already in Use:
+    - Ensure port 5000 is not being used by another application.
+3. Docker Build Issues:
+    - Verify that all required files (Dockerfile, scrape.js, server.py, package.json) are in the same directory.
+
+---
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+This [README.md]() includes:
+- **Build Instructions**: How to build the Docker image.
+- **Run Instructions**: How to run the container and pass the URL.
+- **Access Instructions**: How to access the hosted scraped data.
+- **Example Output**: A sample JSON response.
+- **Troubleshooting**: Common issues and fixes.
+
+Let me know if you need further adjustments! 🚀
