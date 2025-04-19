@@ -25,8 +25,8 @@ The application uses a multi-stage Docker build to keep the final image lightwei
 ## How to Build the Docker Image
 1. Clone the repository:
 ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/amaan-sayyed/Multi-Stage-Scraper-and-Hosting-Application.git
+   cd Multi-Stage-Scraper-and-Hosting-Application
 ```
 2. Build the Docker image:
 ```bash
